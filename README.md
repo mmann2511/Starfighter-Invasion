@@ -75,15 +75,6 @@ Your mission:
 | Lives shown as text               | Lives shown as miniature X-Wing sprite icons              |
 | Keyboard movement                 | Mouse-tracking ship control                               |
 
-These changes show a deep understanding of:
-
-* sprite motion physics
-* randomization
-* velocity clamping
-* state tracking
-* image rendering
-* collision systems
-* game loop structure
 
 ---
 
