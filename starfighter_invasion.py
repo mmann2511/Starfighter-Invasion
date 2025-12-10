@@ -92,8 +92,28 @@ class StarfighterInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        bullet1 = Bullet(self)
+        bullet2 = Bullet(self)
+
+        # adjust x position from base bullet
+        bullet1.rect.centerx = self.ship.rect.centerx + 35
+        bullet1.x = float(bullet1.rect.x)
+
+        bullet2.rect.centerx = self.ship.rect.centerx - 35
+        bullet2.x = float(bullet2.rect.x)
+
+        # adjust y position
+        bullet1.rect.y += 20
+        bullet1.y = float(bullet1.rect.y)
+
+        bullet2.rect.y = bullet1.rect.y
+        bullet2.y = float(bullet2.rect.y)
+
+        # angle the bullet
+        bullet1.dx = -0.5
+        bullet2.dx = +0.5
+
+        self.bullets.add(bullet1, bullet2)
 
     def _update_bullets(self):
         """Update bullet positions and remove off-screen bullets."""
