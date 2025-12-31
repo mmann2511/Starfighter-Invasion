@@ -1,30 +1,28 @@
-
 # 🚀 **Starfighter Invasion**
 
-A fast-paced space shooter built in Python with Pygame, featuring chaotic enemy AI, swooping TIE fighters, and a dynamic starfield background.
+A fast-paced 2D space shooter built in **Python** using **Pygame**, featuring player-aimed combat, diving enemy fighters, burst-fire lasers, and a dynamic starfield background.
+
+This project is an extended and modified version of the *Alien Invasion* tutorial from **Python Crash Course (3rd Edition)**, used as a sandbox to experiment with enemy behavior, movement, and real-time game systems.
 
 ---
 
 ## 🎮 **About the Game**
 
-**Starfighter Invasion** began as an expansion of the *Alien Invasion* project from **Python Crash Course (3rd Edition)** by Eric Matthes.
+**Starfighter Invasion** began as a learning project and gradually evolved through experimentation and refactoring.
 
-Key Enhancements Beyond Python Crash Course:
+Rather than focusing on complex AI immediately, the game emphasizes:
 
-* **New enemy types**
-* **Custon artwork (X-Wing + TIE Fighters sprites)**
-* **Chaotic randomized AI motion**
-* **Vertical swooping attacks**
-* **Animated starfield background**
-* **Difficulty scaling based on level**
-* **More dynamic gameplay than the tutorial version**
+* clear movement logic
+* readable code
+* controlled difficulty
+* incremental feature additions
 
-You pilot an **X-Wing fighter**, defending space against waves of **rogue TIE Fighters** that fly, bounce, swoop, and accelerate as the chaos intensifies.
+You pilot an **X-Wing**, defending space against waves of **TIE fighters** that dive toward your position and unleash burst-fire laser attacks.
 
-Your mission:
+**Your objective:**
 🔥 Survive
-🔥 Score points
-🔥 Beat the galactic high score
+🔥 Destroy enemy fighters
+🔥 Beat the persistent high score
 
 ---
 
@@ -32,95 +30,128 @@ Your mission:
 
 ### ⭐ Player Mechanics
 
-* Smooth mouse-controlled X-Wing positioning
-* High-speed laser fire
-* Collision detection with enemy sprites
+* Mouse-controlled X-Wing movement
+* Dual angled laser fire
+* Collision detection with enemies and projectiles
 * Limited lives with visual ship counter
+* Score, level, and high-score tracking
 
-### ⭐ Enemy AI & Difficulty
+### ⭐ Enemy Fighters
 
-* Randomized chaotic horizontal and vertical movement
-* Velocity wobble and direction changes
-* **Swooping attacks** from off-screen above
-* Speed increases each level
-* Chaos multiplier scaling per wave
-* Screen-edge bouncing behavior
+* 1–3 TIE fighters on screen (testing configuration)
+* Fighters spawn above the screen and **dive toward the player’s position**
+* Burst-fire attack pattern (double-shot followed by cooldown)
+* Slightly angled enemy lasers for spread
+* Fighters are removed once they exit the screen
 
-### ⭐ Visual & UI Upgrades
+### ⭐ Visual & UI Elements
 
-* Fully transparent PNG sprites
-* Image scaling for both game and scoreboard displays
-* Animated starfield background (random stars every frame)
+* Transparent PNG sprites
+* Animated starfield background (random stars rendered each frame)
 * Bright laser effects
-* Smooth score, level, and high score display
+* Clean scoreboard UI with score, level, and lives display
 
 ### ⭐ Core Game Systems
 
-* Persistent high score (saved to JSON)
+* Persistent high score stored in JSON
 * Bullet collision handling
-* Level progression and difficulty scaling
-* Restart button and mouse capture controls
+* Level progression and speed scaling
+* Restart system with mouse capture and Play button
 
 ---
 
-## 🧬 **Technical Enhancements vs. Original Tutorial**
+## 🧬 **How This Differs from the Original Tutorial**
 
-| Original Crash Course Game        | Starfighter Invasion Modifications                        |
-| --------------------------------- | --------------------------------------------------------- |
-| BMP sprites with white background | Transparent PNG assets & custom scaling                   |
-| Fleets move left/right and drop   | Free-moving chaotic AI with screen bouncing               |
-| No vertical motion                | Full screen travel + off-screen swooping attacks          |
-| Static background                 | Animated starfield simulation                             |
-| Simple speed scaling              | Independent scaling for speed, chaos, and swoop intensity |
-| Lives shown as text               | Lives shown as miniature X-Wing sprite icons              |
-| Keyboard movement                 | Mouse-tracking ship control                               |
-
+| Python Crash Course Version | Starfighter Invasion       |
+| --------------------------- | -------------------------- |
+| Static background           | Animated starfield         |
+| Simple fleet movement       | Independent diving enemies |
+| Keyboard ship movement      | Mouse-controlled ship      |
+| No enemy projectiles        | Enemy burst-fire lasers    |
+| Text-based lives display    | Sprite-based life counter  |
+| No persistent score         | High score saved to JSON   |
 
 ---
 
-## 🧩 **File Structure**
+## 🧩 **Project Structure**
 
 ```
 starfighter_invasion/
 │
-├── starfighter_invasion.py      # Main game loop & event handling
-├── settings.py                  # Difficulty scaling, tuning, screen configs
-├── xwing.py                     # Player ship logic and mouse movement
-├── tiefighter.py                # Randomized enemy AI and swooping behavior
-├── bullet.py                    # Laser mechanics and collisions
-├── button.py                    # Play button creation
-├── game_stats.py                # Score, high score, lives, and persistence
-├── scoreboard.py                # Score, level, lives display
+├── starfighter_invasion.py   # Main game loop & event handling
+├── settings.py               # Screen size, speed tuning, difficulty scaling
+├── xwing.py                  # Player ship logic
+├── tiefighter.py             # Enemy movement & firing behavior
+├── bullet.py                 # Player and enemy laser logic
+├── button.py                 # Play button UI
+├── game_stats.py             # Score, lives, high score persistence
+├── scoreboard.py             # On-screen UI rendering
 │
-├── high_score.json              # Persistent high score storage
+├── high_score.json           # Persistent high score storage
 │
 └── images/
-    ├── xwing.png                # Player sprite
-    └── tiefighter.png           # Enemy sprite
+    ├── xwing.png             # Player sprite
+    └── tiefighter.png        # Enemy sprite
 ```
 
 ---
 
-## 🕹️ **How to Play**
+## 🕹️ **How to Run**
 
-### Install Python & Pygame:
+### Install dependencies
 
-```
+```bash
 pip install pygame
 ```
 
-### Run the game:
+### Run the game
 
-```
+```bash
 python starfighter_invasion.py
 ```
 
-### Controls:
+### Controls
 
-* 🖱 **Mouse** — Move your ship left/right
-* 🟢 **Left click** — Fire lasers
+* 🖱 **Mouse** — Move the X-Wing
+* 🟢 **Left Click** — Fire lasers
 * ❌ **Q** — Quit
-* ▶️ **Play button** — Start or restart game
+* ▶️ **Play Button** — Start or restart the game
+
+---
+
+## 📸 **Screenshots**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/28c349cc-6de8-4842-aea0-a161a8c7f7f7" width="750">
+  <br>
+  <em>TIE fighters diving toward the player with starfield rendering</em>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/834d3834-1477-41ba-8c2f-4736dc52689f" width="750">
+  <br>
+  <em>X-Wing combat with dual lasers and score UI</em>
+</p>
+
+---
+
+## 🛠️ **Tech Stack**
+
+* **Python**
+* **Pygame**
+* JSON for persistent scoring
+* Custom sprites and movement logic
+
+---
+
+## 🌟 **Future Ideas**
+
+* Additional enemy movement patterns
+* Boss encounters
+* Particle effects and explosions
+* Power-ups (spread shot, shields, rapid fire)
+* Sound effects and music
+* Pause menu and difficulty settings
 
 ---
 
@@ -128,41 +159,10 @@ python starfighter_invasion.py
 
 Created by **Michael Mann**
 
-Based on the original *Alien Invasion* project from **Python Crash Course**, 3rd Edition by Eric Matthes — but heavily expanded with original gameplay systems, movement AI, artwork, and rendering improvements.
+Based on the *Alien Invasion* project from **Python Crash Course (3rd Edition)** by Eric Matthes, and expanded through independent experimentation and iteration.
 
 ---
 
-# 🛠️ **Tech Stack**
 
-* 🧠 Written in **Python**
-* 🎨 Rendered with **Pygame**
-* 📁 JSON for persistent scoring
-* 🪐 Custom visual assets and physics logic
-
- 
-## 📸 Screenshots
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/28c349cc-6de8-4842-aea0-a161a8c7f7f7" width="750">
-  <br>
-  <em>Chaotic TIE fighter movement with starfield rendering</em>
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/834d3834-1477-41ba-8c2f-4736dc52689f" width="750">
-  <br>
-  <em>Player ship and score UI with rapid laser fire</em>
-</p>
-
-
-## 🌟 Future Enhancements
-
-- Enemy types with unique movement styles
-- Boss encounters or multi-wave levels
-- Explosions and particle effects
-- Power-ups (spread shot, shield, rapid fire)
-- Sound effects and music
-- Game menu and difficulty settings
-- Pause system and settings screen
 
 
