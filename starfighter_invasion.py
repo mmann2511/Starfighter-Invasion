@@ -34,6 +34,9 @@ class StarfighterInvasion:
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
 
+        #Enemy Bullet
+        self.enemy_bullets = pygame.sprite.Group()
+
         self._create_fleet()
 
         self.game_active = False
@@ -48,6 +51,7 @@ class StarfighterInvasion:
             if self.game_active:
                 self.ship.update()
                 self._update_bullets()
+                self.enemy_bullets.update()
                 self.aliens.update()
 
             self._update_screen()
@@ -173,27 +177,12 @@ class StarfighterInvasion:
             self._ship_hit()
 
     def _create_fleet(self):
-        """Create a fleet of TieFighters"""
+        """Spawn One TieFighter for testing"""
         fighter = TieFighter(self)
-        width, height = fighter.rect.size
-
-        current_x, current_y = width, height
-
-        while current_y < (self.settings.screen_height - 3 * height):
-            while current_x < (self.settings.screen_width - 2 * width):
-                self._create_fighter(current_x, current_y)
-                current_x += 2 * width
-
-            current_x = width
-            current_y += 2 * height
-
-    def _create_fighter(self, x_position, y_position):
-        """Create a TieFighter at a given row/column"""
-        fighter = TieFighter(self)
-        fighter.x = x_position
-        fighter.rect.x = x_position
-        fighter.rect.y = y_position
-        self.aliens.add(fighter)
+        fighter2 = TieFighter(self)
+        fighter3 = TieFighter(self)
+        
+        self.aliens.add(fighter, fighter2, fighter3)
 
     def draw_stars(self, num_stars=50):
         """Draw random stars on the screen."""
@@ -211,6 +200,10 @@ class StarfighterInvasion:
 
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+
+        for bullet in self.enemy_bullets.sprites():
+            bullet.draw_bullet()    
+    
 
         self.ship.blitme()
         self.aliens.draw(self.screen)

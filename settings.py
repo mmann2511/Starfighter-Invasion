@@ -5,7 +5,7 @@ class Settings:
         """Initialize the game's static settings."""
         # Screen settings
         self.screen_width = 1200
-        self.screen_height = 800
+        self.screen_height = 1200
         self.bg_color = (10, 10, 40) # Deep Space Blue
 
         # Ship's speed
@@ -16,7 +16,7 @@ class Settings:
         self.bullet_speed = 100
         self.bullet_width = 3
         self.bullet_height = 15
-        self.bullet_color = (0, 255, 255) # Laser Cyan  
+        self.bullet_color = (255, 0, 0) # Red  
         self.bullets_allowed = 3
 
         # Alien settings
